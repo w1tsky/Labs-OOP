@@ -12,38 +12,38 @@ namespace _1
 
             // a) Определите переменные всех возможных примитивных типов С# и проинициализируйте их.  
 
-            sbyte a1 = 1;
+            sbyte a1 = 1; // 8 бит 
             Console.WriteLine($"    Задание 1(a)\n sbyte: { a1}");
-            short a2 = 2;
+            short a2 = 2; // 16
             Console.WriteLine($" short: {a2}");
-            int a3 = 3;
+            int a3 = 3; // 32
             Console.WriteLine($" int: {a3}");
-            long a4 = 4;
+            long a4 = 4; //16
             Console.WriteLine($" long: {a4}");
-            byte a5 = 5;
+            byte a5 = 5; // 8
             Console.WriteLine($" byte: {a5}");
-            ushort a6 = 6;
+            ushort a6 = 6; // 16
             Console.WriteLine($" ushort: {a6}");
-            uint a7 = 7;
+            uint a7 = 7; // 32
             Console.WriteLine($" uint: {a7}");
-            ulong a8 = 8;
+            ulong a8 = 8; // 64
             Console.WriteLine($" ulong: {a8}");
-            char a9 = '9';
-            Console.WriteLine($" char: {a9}");
-            bool a10 = true;
+            char maxChar = '127';
+            Console.WriteLine($" char: {maxChar}");
+            bool a10 = true; // 8
             Console.WriteLine($" bool: {a10}");
-            float a11 = 11;
+            float a11 = 11; // 32
             Console.WriteLine($" float: {a11}");
-            double a12 = 12;
+            double a12 = 12; // 64
             Console.WriteLine($" double: {a12}");
-            string a13 = "13";
+            string a13 = "13"; // 64
             Console.WriteLine($" string: {a13}\n");
-            
+            decimal b = 120m; // 128 
 
             // b) Выполните операции явного и неявного приведения.
 
-            short b1 = 1;
-            int b2 = b1; //неявное приведение
+            short b1 = 1; //16
+            int b2 = b1; //неявное приведение 
             Console.WriteLine($"    Задание 1(b)\nshort b1 = {b1}, int b2 = b1, b2 = {b2} ");
 
             long b3 = 1000;
@@ -61,18 +61,34 @@ namespace _1
             Console.WriteLine($"x = {x} \n\n");
 
             // d) Продемонстрируйте работу с неявно типизированной переменной.
-
+            
             var c = "word";
             Console.WriteLine($"    Задание 1(d)\nиницализирована переменна 'c' типа стринг и равная: '{c}'\n\n");
+            // Одинарные ковычки char
+            // ВЫвести тип переменоой c
+
 
             // e) Продемонстрируйте пример работы с Nullable переменной.
 
             int? c1 = null; // инициализация типа Nullable
             int c2 = 999;
-            Console.WriteLine($"    Задание 1(e)\nc1 = null, c2 = 999\nc1??c2: {c1??c2}\n\n"); 
+            Console.WriteLine($"    Задание 1(e)\nc1 = null, c2 = 999\nc1??c2: {c1??c2}\n\n");
+            int? k2 = null;
+            int? k1 = 7;
 
+            int? q = null;
+            int q4 = 6;
+            int? q8 = 4;
+
+            int f2, f1, q10, q1;
+            f1 = k1 ?? 8; // 7
+            f2 = k2 ?? 6; // 6
+            q10 = q ?? q4;
+            q1 = q8 ?? 10; // 4
+            Console.WriteLine("Проверка оператора ?? " + f2);
+            Console.WriteLine("Проверка оператора ?? " + f1);
             //   Задание 2   
-            
+
 
             // a) Объявите строковые литералы. Сравните их.
 
@@ -103,7 +119,7 @@ namespace _1
             Console.WriteLine($"null строка: ошибка\n\n");
 
             // d) Создайте строку на основе StringBuilder. Удалите определенные позиции и добавьте новые символы в начало и конец строки.
-
+            // 50?
             StringBuilder sb = new StringBuilder("ABC", 50);
             Console.WriteLine($"Создаём StringBuilder на 50 символов и иницализируем строкой: {sb}");
             sb.Append(new char[] { 'D', 'E', 'F' });
@@ -178,7 +194,7 @@ namespace _1
              и минимальный элементы массива, сумму элементов массива и первую букву строки
              */
 
-            Console.WriteLine($"    Задание 5");
+            Console.WriteLine($"Задание 5");
 
             (int,int,int,char) createTuple(int[] grh,string bhm)
             {

@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Lab3
+namespace ClassesAndObjects
 {
     class OneDArray
     {
         // Поля
         int[] IntArray;
         int size = 0;
+        readonly int lolika = 15;
+        string Name;
 
         // Конструктор, позволяющий создать массив размерности n.
         public OneDArray(int size)
@@ -43,7 +41,7 @@ namespace Lab3
         // Метод, позволяющий отсортировать элементы массива в порядке возрастания.
         public void SortingArray() => Array.Sort(IntArray);
 
-        // Свойство возвращающее размерность массива (доступное только для чтения).
+        // Свойство возвращающее размерность массива.
         public string Length => $"\nРазмерность массива составляет {IntArray.Length} элемента.";
 
         // Свойство позволяющее домножить все элементы массива на скаляр (доступное только для записи).
@@ -130,6 +128,13 @@ namespace Lab3
         public static explicit operator int[] (OneDArray transformation)
         {
             return transformation.IntArray;
+        }
+
+        public override string ToString() //переопределение метода system.object
+        {
+            if (String.IsNullOrEmpty(Name))
+                return base.ToString();
+            return Name;
         }
     }
 }
