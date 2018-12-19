@@ -15,6 +15,7 @@ namespace Lab8
         void Delete(int num);
         void Out();
     }
+    
 
     public class Owner
     {
