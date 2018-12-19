@@ -141,7 +141,7 @@ namespace lab_9
             action += ToUpperCase;
             action += RemoveStr;
             action(str);
-
+            
             Console.ReadKey();
         }
     }
