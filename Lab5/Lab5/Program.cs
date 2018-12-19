@@ -60,6 +60,7 @@ namespace Lab5
                 Console.WriteLine("Самолёт не пригоден к эксплутации");
             }
         }
+
         public void Info(string str)
         {
             Console.WriteLine(str);
@@ -67,25 +68,26 @@ namespace Lab5
 
         public virtual void addInfo()
         {
-            Console.WriteLine("название самолёта");
+            Console.WriteLine("Название самолёта");
             name = Console.ReadLine();
 
-            Console.WriteLine("задача данного самолёта");
+            Console.WriteLine("Задача данного самолёта");
             purpose = Console.ReadLine();
 
-            Console.WriteLine("вес данного самолёта");
+            Console.WriteLine("Вес данного самолёта");
             weight = Console.ReadLine();
 
-            Console.WriteLine("количество крыльев");
+            Console.WriteLine("Количество крыльев");
             wings = Console.ReadLine();
 
-            Console.WriteLine("количество двигателей");
+            Console.WriteLine("Количество двигателей");
             engine = Console.ReadLine();
 
-            Console.WriteLine("как долго находится в эксплутации?");
+            Console.WriteLine("Как долго находится в эксплутации?");
             yeahr = Int32.Parse(Console.ReadLine());
 
         }
+
         public virtual void Type()
         {
             Console.WriteLine("Транспорт");
@@ -124,7 +126,7 @@ namespace Lab5
         string Form { get; set; }
         public override void Type()
         {
-            Console.WriteLine("транспорт");
+            Console.WriteLine("Транспорт-Авиация");
         }
 
     }
@@ -133,7 +135,7 @@ namespace Lab5
     {
         public override void Type()
         {
-            Console.WriteLine("грузовой самолёт");
+            Console.WriteLine("Грузовой самолёт");
         }
 
     }
@@ -141,14 +143,14 @@ namespace Lab5
     {
         public override void Type()
         {
-            Console.WriteLine("военный самолёт");
+            Console.WriteLine("Военный самолёт");
         }
     }
     class Pasanger : Aviation
     {
         public override void Type()
         {
-            Console.WriteLine("пассажирский самолёт");
+            Console.WriteLine("Пассажирский самолёт");
         }
 
     }
@@ -230,11 +232,22 @@ namespace Lab5
 
             Console.ForegroundColor = ConsoleColor.Red;
             ITransport confTwo = military as ITransport;
+            ITrans confThree = cargo as ITrans;
 
             if (confTwo != null)
             {
                 confTwo.Info();
             }
+            
+            if (confThree != null)
+            {
+                confThree.Info("fsfe");
+            }
+
+
+
+
+
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine(cargo.ToString());
