@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FD1A6D26-AA5C-4E1A-A971-8441C29745D1}</ProjectGuid>
+    <ProjectGuid>{B92ECA6D-6298-40A9-8B42-5D3B32F66C0E}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lab11</RootNamespace>
-    <AssemblyName>Lab11</AssemblyName>
+    <RootNamespace>Lab_13</RootNamespace>
+    <AssemblyName>Lab_13</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
+    <Compile Include="MDS_Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MDS_DirInfo.cs" />
+    <Compile Include="MDS_DiskInfo.cs" />
+    <Compile Include="MDS_FileInfo.cs" />
+    <Compile Include="MDS_FileManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

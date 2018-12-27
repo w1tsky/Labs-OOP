@@ -47,7 +47,7 @@ namespace Lab8
 
     public class Matrix<T> : IGeneric<T> where T : struct
     {
-        public double[,] arr = new double[3, 3];
+        private double[,] arr = new double[3, 3];
         List<T> list = new List<T>();
         public void Out()
         {
@@ -75,7 +75,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    arr[i, j] = rand.Next(100);
+                    Arr[i, j] = rand.Next(100);
 
                 }
             }
@@ -90,7 +90,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    arr[i, j] = rand.Next(50);
+                    Arr[i, j] = rand.Next(50);
 
                 }
             }
@@ -104,7 +104,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write("{0}\t", arr[i, j]);
+                    Console.Write("{0}\t", Arr[i, j]);
                 }
                 Console.WriteLine("\n");
             }
@@ -115,14 +115,14 @@ namespace Lab8
         public void zap()
 
         {
-            arr[0, 0] = arr[0, 0] - 1;
-            arr[1, 1] = arr[1, 1] - 1;
-            arr[2, 2] = arr[2, 2] - 1;
+            Arr[0, 0] = Arr[0, 0] - 1;
+            Arr[1, 1] = Arr[1, 1] - 1;
+            Arr[2, 2] = Arr[2, 2] - 1;
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    Console.Write("{0}\t", arr[i, j]);
+                    Console.Write("{0}\t", Arr[i, j]);
                 }
                 Console.WriteLine("\n");
             }
@@ -141,7 +141,7 @@ namespace Lab8
             {
                 for (int i = 0; i < 3; i++)
                     for (int j = 0; j < 3; j++)
-                        if (m1.arr[i, j] != m2.arr[i, j])
+                        if (m1.Arr[i, j] != m2.Arr[i, j])
                             return false;
                 return true;
             }
@@ -156,7 +156,7 @@ namespace Lab8
             {
                 for (int i = 0; i < 3; i++)
                     for (int j = 0; j < 3; j++)
-                        if (m1.arr[i, j] == m2.arr[i, j])
+                        if (m1.Arr[i, j] == m2.Arr[i, j])
                             return false;
                 return true;
             }
@@ -169,12 +169,12 @@ namespace Lab8
         public static bool operator <(Matrix<T> m1, Matrix<T> m2)
         {
             bool result = true;
-            if (m1.arr[0, 0] > m2.arr[0, 0])
+            if (m1.Arr[0, 0] > m2.Arr[0, 0])
             {
                 result = false;
 
             }
-            if (m1.arr[0, 0] == m2.arr[0, 0])
+            if (m1.Arr[0, 0] == m2.Arr[0, 0])
             {
                 result = false;
 
@@ -188,11 +188,11 @@ namespace Lab8
         {
             bool result = true;
 
-            if (m1.arr[0, 0] < m2.arr[0, 0])
+            if (m1.Arr[0, 0] < m2.Arr[0, 0])
             {
                 result = false;
             }
-            if (m1.arr[0, 0] == m2.arr[0, 0])
+            if (m1.Arr[0, 0] == m2.Arr[0, 0])
             {
                 result = false;
             }
@@ -207,7 +207,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    result.arr[i, j] = m1.arr[i, j] - m3.arr[i, j];
+                    result.Arr[i, j] = m1.Arr[i, j] - m3.Arr[i, j];
                 }
             }
             return result;
@@ -219,8 +219,8 @@ namespace Lab8
             {
                 for (int j = 3 - 1; j >= 0; j--)
                 {
-                    ivners.arr[i, j] = ivners.arr[i, j];
-                    Console.Write("{0}\t", ivners.arr[i, j]);
+                    ivners.Arr[i, j] = ivners.Arr[i, j];
+                    Console.Write("{0}\t", ivners.Arr[i, j]);
                 }
                 Console.WriteLine("\n");
             }
@@ -247,8 +247,13 @@ namespace Lab8
             owner.Info();
         }
 
-        Owner owner = new Owner("Yulya Buraya", "BSTU");
+        Owner owner = new Owner("Daniil Marchuk", "BSTU");
         Date date = new Date();
+
+        public double[,] Arr { get => Arr2; set => Arr2 = value; }
+        public double[,] Arr1 { get => Arr2; set => Arr2 = value; }
+        public double[,] Arr2 { get => arr; set => arr = value; }
+
         public void Save()
         {
             string text = "\n\n\n" + date.date + "/nid=" + owner.ID + "/nname" + owner.name + "/norganization=" + owner.organization;
@@ -256,7 +261,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    text = "\t" + arr[i, j];
+                    text = "\t" + Arr[i, j];
                 }
                 text += "\n";
             }
@@ -276,14 +281,14 @@ namespace Lab8
     {
         public static double Max(this Matrix<int> matr1)
         {
-            double max = matr1.arr[0, 0];
+            double max = matr1.Arr[0, 0];
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (matr1.arr[i, j] > max)
+                    if (matr1.Arr[i, j] > max)
                     {
-                        max = matr1.arr[i, j];
+                        max = matr1.Arr[i, j];
                     }
                 }
             }
@@ -293,14 +298,14 @@ namespace Lab8
 
         public static double Min(this Matrix<int> matr1)
         {
-            double min = matr1.arr[0, 0];
+            double min = matr1.Arr[0, 0];
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (matr1.arr[i, j] < min)
+                    if (matr1.Arr[i, j] < min)
                     {
-                        min = matr1.arr[i, j];
+                        min = matr1.Arr[i, j];
                     }
                 }
             }
@@ -327,7 +332,7 @@ namespace Lab8
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    sum += matr1.arr[i, j];
+                    sum += matr1.Arr[i, j];
                 }
             }
             return sum;
@@ -451,50 +456,55 @@ namespace Lab8
                 Console.WriteLine("\n 3.Удалить элемент ");
                 Console.WriteLine("\n 4.Сохранить объект ");
                 Console.WriteLine("Выберите действие: ");
-                k = int.Parse(Console.ReadLine());
+             
+                    k = int.Parse(Console.ReadLine());
                 Console.WriteLine();
-                switch (k)
-                {
-                    case 1:
-                        try
-                        {
+                
+                    switch (k)
+                    {
 
-                            Console.Write("Введите число: ");
-                            int x = int.Parse(Console.ReadLine());
-                            m1.Add(x);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
-                        finally
-                        {
-                            Console.WriteLine("Операция завершена");
-                        }
-                        break;
-                    case 2:
-                        m1.Out();
-                        break;
-                    case 3:
-                        try
-                        {
-                            Console.Write("Введите номер элемента который хотите удалить: ");
-                            int i = int.Parse(Console.ReadLine());
-                            m1.Delete(i);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e.Message);
-                        }
-                        finally
-                        {
-                            Console.WriteLine("Операция завершена");
-                        }
-                        break;
-                    case 4:
-                        m1.Save();
-                        break;
-                }
+                        case 1:
+                            try
+                            {
+
+                                Console.Write("Введите число: ");
+                                int x = int.Parse(Console.ReadLine());
+                                m1.Add(x);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
+                            finally
+                            {
+                                Console.WriteLine("Операция завершена");
+                            }
+                            break;
+                        case 2:
+                            m1.Out();
+                            break;
+                        case 3:
+                            try
+                            {
+                                Console.Write("Введите номер элемента который хотите удалить: ");
+                                int i = int.Parse(Console.ReadLine());
+                                m1.Delete(i);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
+                            finally
+                            {
+                                Console.WriteLine("Операция завершена");
+                            }
+                            break;
+                        case 4:
+                            m1.Save();
+                            break;
+                    }
+                
+               
             } while (k != 0);
 
             Console.ReadKey();
