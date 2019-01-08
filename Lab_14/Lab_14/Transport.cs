@@ -21,7 +21,9 @@ namespace Lab_14
 
     }
 
-    abstract class Transport : ITrans, ITransport
+    [Serializable]
+
+    public class Transport : ITrans, ITransport
     {
         public string name { get; set; }
         public string purpose { get; set; }
@@ -81,7 +83,7 @@ namespace Lab_14
     }
 
 
-
+    [Serializable]
     class Aviation : Transport
     {
         string Form { get; set; }
@@ -92,6 +94,7 @@ namespace Lab_14
 
     }
 
+    [Serializable]
     class Cargo : Transport
     {
         public override void Type()
@@ -100,6 +103,7 @@ namespace Lab_14
         }
 
     }
+    [Serializable]
     class Military : Transport
     {
         public override void Type()
@@ -115,6 +119,7 @@ namespace Lab_14
         }
 
     }
+
     sealed class Ty134 : Transport
     {
         public override void Type()
@@ -122,7 +127,9 @@ namespace Lab_14
             Console.WriteLine("Ty134");
         }
     }
-    sealed class Boing : Transport
+
+    [Serializable]
+    public class Boing : Transport
     {
         public override void Type()
         {
@@ -157,7 +164,7 @@ namespace Lab_14
             sw.WriteLine("Информация о классе");
             sw.WriteLine("Full name = " + t.FullName);
             sw.WriteLine("Base type = " + t.BaseType);
-            sw.WriteLine("Is saled = " + t.IsSealed);
+            sw.WriteLine("Is Seled = " + t.IsSealed);
             sw.WriteLine("Is Class = " + t.IsClass);
 
 

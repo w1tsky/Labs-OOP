@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C730E94-7387-4328-A384-04DA4F27E456}</ProjectGuid>
+    <ProjectGuid>{60F126AF-60BC-4120-A5F8-5800D8CDD6F3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Lab_14</RootNamespace>
-    <AssemblyName>Lab_14</AssemblyName>
+    <RootNamespace>Lab_16</RootNamespace>
+    <AssemblyName>Lab_16</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,8 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Transport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
-using System.Collections;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization.Formatters.Soap;
-
+using System.Runtime.Serialization.Json;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
@@ -15,9 +14,9 @@ namespace Lab_14
     {
         static void Main(string[] args)
         {
-            Aviation plane = new Aviation();
-            Aviation plane2 = new Aviation();
-            Aviation[] planes = new Aviation[] { plane, plane2 };
+            Boing plane = new Boing();
+            Boing plane2 = new Boing();
+            Boing[] planes = new Boing[] { plane, plane2 };
 
             plane.addInfo();
             plane2.addInfo();
@@ -42,7 +41,7 @@ namespace Lab_14
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("candy.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.dat", FileMode.OpenOrCreate))
             {
 
                 formatter.Serialize(fs, obj);
@@ -56,9 +55,9 @@ namespace Lab_14
         {
             BinaryFormatter formatter = new BinaryFormatter();
 
-            using (FileStream fs = new FileStream("candy.dat", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.dat", FileMode.OpenOrCreate))
             {
-                Aviation plane = (Aviation)formatter.Deserialize(fs);
+                Boing plane = (Boing)formatter.Deserialize(fs);
 
                 Console.Write("Объект Десериализован ");
                 plane.Type();
@@ -69,7 +68,7 @@ namespace Lab_14
         {
             SoapFormatter formatter = new SoapFormatter();
 
-            using (FileStream fs = new FileStream("candy.soap", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.soap", FileMode.OpenOrCreate))
             {
 
                 formatter.Serialize(fs, obj);
@@ -83,9 +82,9 @@ namespace Lab_14
         {
             SoapFormatter formatter = new SoapFormatter();
 
-            using (FileStream fs = new FileStream("candy.soap", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.soap", FileMode.OpenOrCreate))
             {
-                Aviation plane = (Aviation)formatter.Deserialize(fs);
+                Boing plane = (Boing)formatter.Deserialize(fs);
 
                 Console.Write("Объект Десериализован ");
                 plane.Type();
@@ -94,9 +93,9 @@ namespace Lab_14
 
         static public void XMLSerialize(object obj)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Aviation));
+            XmlSerializer serializer = new XmlSerializer(typeof(Boing));
 
-            using (FileStream fs = new FileStream("candy.xml", FileMode.Create))
+            using (FileStream fs = new FileStream("plane.xml", FileMode.Create))
             {
                 serializer.Serialize(fs, obj);
 
@@ -106,11 +105,11 @@ namespace Lab_14
 
         static public void XMLDeserialize()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Aviation));
+            XmlSerializer serializer = new XmlSerializer(typeof(Boing));
 
-            using (FileStream fs = new FileStream("candy.xml", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.xml", FileMode.OpenOrCreate))
             {
-                Aviation plane = (Aviation)serializer.Deserialize(fs);
+                Boing plane = (Boing)serializer.Deserialize(fs);
                 Console.Write("Объект Десериализован ");
                 plane.Type();
             }
@@ -118,9 +117,9 @@ namespace Lab_14
 
         static public void XMLArraySerialize(object[] obj)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Aviation[]));
+            XmlSerializer serializer = new XmlSerializer(typeof(Boing[]));
 
-            using (FileStream fs = new FileStream("candyArray.xml", FileMode.Create))
+            using (FileStream fs = new FileStream("planeArray.xml", FileMode.Create))
             {
                 serializer.Serialize(fs, obj);
 
@@ -130,13 +129,13 @@ namespace Lab_14
 
         static public void XMLArrayDeserialize()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Aviation[]));
+            XmlSerializer serializer = new XmlSerializer(typeof(Boing[]));
 
-            using (FileStream fs = new FileStream("candyArray.xml", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("planeArray.xml", FileMode.OpenOrCreate))
             {
-                Aviation[] plane = (Aviation[])serializer.Deserialize(fs);
+                Boing[] plane = (Boing[])serializer.Deserialize(fs);
                 Console.WriteLine("Объект Десериализован ");
-                foreach (Aviation c in plane)
+                foreach (Boing c in plane)
                 {
                     c.Type();
                 }
@@ -145,9 +144,9 @@ namespace Lab_14
 
         static public void JSONSerialize(object obj)
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Candy));
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Boing));
 
-            using (FileStream fs = new FileStream("candy.json", FileMode.Create))
+            using (FileStream fs = new FileStream("plane.json", FileMode.Create))
             {
                 json.WriteObject(fs, obj);
                 Console.WriteLine("Сериализация Json завершена");
@@ -156,18 +155,18 @@ namespace Lab_14
 
         static public void JSONDeserialize()
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Aviation));
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Boing));
 
-            using (FileStream fs = new FileStream("candy.json", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("plane.json", FileMode.OpenOrCreate))
             {
-                Aviation plane = (Aviation)json.ReadObject(fs);
+                Boing plane = (Boing)json.ReadObject(fs);
                 Console.Write("Объект Десериализован ");
                 plane.Type();
             }
         }
         static public void JSONArraySerialize(object[] obj)
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Aviation[]));
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Boing[]));
 
             using (FileStream fs = new FileStream("candyArray.json", FileMode.Create))
             {
@@ -178,14 +177,14 @@ namespace Lab_14
 
         static public void JSONArrayDeserialize()
         {
-            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Aviation[]));
+            DataContractJsonSerializer json = new DataContractJsonSerializer(typeof(Boing[]));
 
             using (FileStream fs = new FileStream("candyArray.json", FileMode.OpenOrCreate))
             {
-                Aviation[] candy = (Aviation[])json.ReadObject(fs);
+                Boing[] candy = (Boing[])json.ReadObject(fs);
                 Console.WriteLine("Объект Десериализован ");
 
-                foreach (Aviation c in candy)
+                foreach (Boing c in candy)
                 {
                     c.Type();
                 }

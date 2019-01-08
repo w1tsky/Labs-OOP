@@ -10,13 +10,19 @@ namespace Lab_12
     {
         static void Main(string[] args)
         {
-            Pasanger Boeing = new Pasanger();
-
-            Reflector.ShowInfo(Boeing);
-
-            Reflector.ShowInterface(Boeing);
-            Reflector.ShowMethod(Boeing);
-
+            Aviation aviation = new Aviation();
+            Reflector.OutInfoInToFile(aviation);
+            Console.WriteLine('\n');
+            Reflector.AllPublicMethod(aviation);
+            Console.WriteLine('\n');
+            Reflector.InfoFieldsAndProperties(aviation);
+            Console.WriteLine('\n');
+            Reflector.AllInterface(aviation);
+            Console.WriteLine('\n');
+            Reflector.ParametrMethof(aviation);
+            Console.WriteLine('\n');
+            Reflector.MethodCall(aviation, "Method");
+            Console.ReadKey();
         }
     }
 }
